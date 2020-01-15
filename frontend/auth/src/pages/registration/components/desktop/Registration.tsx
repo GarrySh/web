@@ -24,7 +24,7 @@ const Registration = ({
 }: Props) => (
   <Column align='center'>
     <Layout basis={60} />
-    <Text size='2xl' height='xs' weight='bold'>
+    <Text size='2xl' lineHeight='xs' weight='bold'>
       {intl.formatMessage(messages.registration)}
     </Text>
     <Layout basis={40} />
@@ -34,13 +34,13 @@ const Registration = ({
           {intl.formatMessage(messages.mail)}
         </Text>
       </Layout>
-    </Row>
+    </Row>    
     <Layout basis={12} />
     <Row justify='center'>
       <Layout basis={360}>
         <Input
           type='email'
-          border='lightGray'
+          borderColor='lightGray'
           error={errors.email}
           value={email}
           onChange={onChangeEmail}
@@ -48,6 +48,15 @@ const Registration = ({
         />
       </Layout>
     </Row>
+    {errors.email && (
+      <Row justify="center">
+        <Layout basis={360}>
+          <Text size="s" color="red">
+            {errors.email}
+          </Text>
+        </Layout>
+      </Row>
+    )}
     <Layout basis={24} />
     <Row justify='center'>
       <Layout basis={360}>
@@ -55,13 +64,13 @@ const Registration = ({
           {intl.formatMessage(messages.password)}
         </Text>
       </Layout>
-    </Row>
+    </Row>    
     <Layout basis={12} />
     <Row justify='center'>
       <Layout basis={360}>
         <Input
           type='password'
-          border='lightGray'
+          borderColor='lightGray'
           error={errors.password}
           value={password}
           onEnter={onRegister}
@@ -70,12 +79,21 @@ const Registration = ({
         />
       </Layout>
     </Row>
+    {errors.password && (
+      <Row justify="center">
+        <Layout basis={360}>
+          <Text size="s" color="red">
+            {errors.password}
+          </Text>
+        </Layout>
+      </Row>
+    )}
     <Layout basis={12} />
     <Row justify='center'>
       <Layout basis={360}>
         <Input
           type='password'
-          border='lightGray'
+          borderColor='lightGray'
           error={password !== confirmPassword}
           value={confirmPassword}
           onEnter={onRegister}

@@ -34,6 +34,17 @@ export const login = () => async (dispatch, getState, client) => {
         password,
       },
     })
+
+    if (data.login.errors) {
+      dispatch({
+        type: actions.setErrors,
+        errors: data.login.errors,
+      })
+    } else {
+      dispatch({
+        type: actions.clear,
+      })
+    }
   } catch (e) {
     dispatch({
       type: auth,

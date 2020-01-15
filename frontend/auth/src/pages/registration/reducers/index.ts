@@ -17,7 +17,10 @@ const initialState: State = {
   email: '',
   password: '',
   confirmPassword: '',
-  errors: {},
+  errors: {
+    email: "проверка, начни печатать",
+    password: "проверка, начни печатать"
+  },
 }
 
 export default createReducer(initialState, {

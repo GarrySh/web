@@ -6,9 +6,26 @@ import messages from '../../messages'
 
 interface Props {
   intl: InjectedIntl
+  onClickSortButton: (sortBy: string) => () => void
+  sortBy: string
+  sortDirection: 'asc' | 'desc'
 }
 
-const List = ({ rows, intl }: Props) => (
+const SortButton = ({ onClickSortButton, value, sortBy, sortDirection }) => {
+  const isActive = value === sortBy
+  const isAsc = sortDirection === 'asc'
+  return (
+    <button onClick={onClickSortButton(value)}>
+      <Text color={isActive && isAsc ? 'red' : 'black'} size='l'>
+        {'\u2191'}
+      </Text>
+      <Text color={isActive && !isAsc ? 'red' : 'black'} size='l'>
+        {'\u2193'}
+      </Text>
+    </button>
+  )
+}
+const List = ({ rows, intl, onClickSortButton, sortBy, sortDirection }: Props) => (
   <Column>
     <Layout basis={60} />
     <Row>
@@ -28,16 +45,37 @@ const List = ({ rows, intl }: Props) => (
         </Text>
       </Layout>
       <Layout basis={200}>
+        <SortButton
+          onClickSortButton={onClickSortButton}
+          value='email'
+          sortBy={sortBy}
+          sortDirection={sortDirection}
+        />
+        <Layout basis={8} />
         <Text size='s' weight='bold' transform='uppercase'>
           {intl.formatMessage(messages.email)}
         </Text>
       </Layout>
-      <Layout basis={180}>
+      <Layout basis={260}>
+        <SortButton
+          onClickSortButton={onClickSortButton}
+          value='registeredAt'
+          sortBy={sortBy}
+          sortDirection={sortDirection}
+        />
+        <Layout basis={8} />
         <Text size='s' weight='bold' transform='uppercase'>
           {intl.formatMessage(messages.registered)}
         </Text>
       </Layout>
-      <Layout basis={160}>
+      <Layout basis={200}>
+      <SortButton
+          onClickSortButton={onClickSortButton}
+          value='lastLogonAt'
+          sortBy={sortBy}
+          sortDirection={sortDirection}
+        />
+        <Layout basis={8} />
         <Text size='s' weight='bold' transform='uppercase'>
           {intl.formatMessage(messages.lastLogin)}
         </Text>
@@ -62,7 +100,7 @@ const List = ({ rows, intl }: Props) => (
             <Text size='s'>{email}</Text>
           </Layout>
           <Layout basis={12} />
-          <Layout basis={168}>
+          <Layout basis={248}>
             <Text size='s'>{intl.formatDate(registeredAt)}</Text>
           </Layout>
           <Layout basis={12} />

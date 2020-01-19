@@ -94,7 +94,11 @@ const Login: FC<Props> = ({
     <Layout basis={24} />
     <Row justify='center'>
       <Layout basis={360}>
-        <Button text disabled={!firstName || !lastName || errors.firstName || errors.lastName} onClick={onSave}>
+        <Button
+          text
+          disabled={!firstName || !lastName || !!errors.firstName || !!errors.lastName}
+          onClick={onSave}
+        >
           {intl.formatMessage(messages.saveProfile)}
         </Button>
       </Layout>

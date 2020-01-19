@@ -11,4 +11,24 @@ export default defineMessages({
     id: `${namespace}.copyright`,
     defaultMessage: 'Atlantis United',
   },
+  userProfile: {
+    id: `${namespace}.userProfile`,
+    defaultMessage: 'Профиль пользователя',
+  },
+  firstName: {
+    id: `${namespace}.firstName`,
+    defaultMessage: 'Имя',
+  },
+  lastName: {
+    id: `${namespace}.lastName`,
+    defaultMessage: 'Фамилия',
+  },
+  saveProfile: {
+    id: `${namespace}.saveProfile`,
+    defaultMessage: 'Сохранить профиль',
+  },
+  cancel: {
+    id: `${namespace}.cancel`,
+    defaultMessage: 'Отмена',
+  },
 })

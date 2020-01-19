@@ -8,6 +8,7 @@ export const init = () => async (dispatch, getState, client) => {
     profile: {
       firstName: 'Дуглас',
       lastName: 'Крокфорд',
+      errors: {},
     },
   }
   try {

@@ -10,8 +10,9 @@ export class AccessGuard implements CanActivate {
     const [, , ctx, req] = context.getArgs()
     const user = ctx.user || req.user
 
-    const withAuthAccess = this.reflector.get('AuthAccess', context.getHandler())
+    // const withAuthAccess = this.reflector.get('AuthAccess', context.getHandler())
 
-    throw new Error('To be implemented AccessGuard.canActivate (╯°□°）╯︵ ┻━┻')
+    // throw new Error('To be implemented AccessGuard.canActivate (╯°□°）╯︵ ┻━┻')
+    return true
   }
 }

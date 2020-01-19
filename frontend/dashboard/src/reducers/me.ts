@@ -7,10 +7,12 @@ const initialState = {
   profile: {
     firstName: '',
     lastName: '',
+    errors: {},
   },
 }
 
 export default createReducer(initialState, {
   [actions.load]: (state, { user }) => ({ ...state, ...user }),
   [actions.clear]: () => initialState,
+  [actions.edit]: (state, { user }) => ({ ...state, ...user }),
 })
